@@ -1,9 +1,8 @@
-# matrix.ps1
 $Host.UI.RawUI.ForegroundColor = 'Green'
 Clear-Host
 while ($true) {
-    # Generate a random string of 118 binary digits per line
-    $line = -join (Get-Random -InputObject 0, 1 -Count 118)
-    Write-Host $line
-    Start-Sleep -Milliseconds 33
-}
+    # Generates multiple random numbers per line to flood the screen horizontally and vertically
+    $line = -join (1..12 | ForEach-Object { Get-Random -Minimum 0 -Maximum 2 })
+    # Repeat the string to fill across standard terminal widths
+    Write-Host ($line * 8) -NoNewline
+} 
